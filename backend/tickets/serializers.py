@@ -5,9 +5,20 @@ from .models import Department, Unit, Transaction, SystemSettings, TransactionIn
 User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, required=False)
+    department_name = serializers.CharField(source='department.name', read_only=True)
+    unit_name = serializers.CharField(source='unit.name', read_only=True)
+
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'role', 'department', 'unit', 'ticket_balance')
+        fields = ('id', 'username', 'email', 'role', 'department', 'department_name', 'unit', 'unit_name', 'ticket_balance', 'password', 'first_name', 'last_name', 'sex', 'staff_id', 'seller_id', 'seller_org_name', 'seller_location', 'seller_alias', 'seller_contact_info')
+
+    def create(self, validated_data):
+        password = validated_data.pop('password', 'defaultpassword')
+        user = super().create(validated_data)
+        user.set_password(password)
+        user.save()
+        return user
 
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:

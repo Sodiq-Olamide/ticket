@@ -26,6 +26,7 @@ class Unit(models.Model):
 class User(AbstractUser):
     class Role(models.TextChoices):
         SUPERADMIN = 'SUPERADMIN', 'SuperAdmin'
+        ADMIN = 'ADMIN', 'Admin'
         HCS = 'HCS', 'HCS'
         HOD = 'HOD', 'HOD'
         HOU = 'HOU', 'HOU'
@@ -36,6 +37,19 @@ class User(AbstractUser):
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True, related_name='users')
     unit = models.ForeignKey(Unit, on_delete=models.SET_NULL, null=True, blank=True, related_name='users')
     ticket_balance = models.IntegerField(default=0)
+    
+    # Generic Profile info
+    sex = models.CharField(max_length=20, null=True, blank=True)
+
+    # Identifier fields
+    staff_id = models.CharField(max_length=50, null=True, blank=True)
+    seller_id = models.CharField(max_length=50, null=True, blank=True)
+
+    # Seller specific fields
+    seller_org_name = models.CharField(max_length=255, null=True, blank=True)
+    seller_location = models.CharField(max_length=255, null=True, blank=True)
+    seller_alias = models.CharField(max_length=255, null=True, blank=True)
+    seller_contact_info = models.TextField(null=True, blank=True)
     
     def __str__(self):
         return f"{self.username} - {self.role}"

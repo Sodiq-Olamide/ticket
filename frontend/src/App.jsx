@@ -7,6 +7,8 @@ import Dashboard from './components/Dashboard';
 import DistributeTickets from './components/DistributeTickets';
 import SellerScanner from './components/SellerScanner';
 import UserQR from './components/UserQR';
+import ManageUsers from './components/ManageUsers';
+import Reports from './components/Reports';
 
 const PrivateRoute = ({ children }) => {
     const { authTokens } = useContext(AuthContext);
@@ -48,6 +50,16 @@ const App = () => {
                 <Route path="/distribute" element={
                     <PrivateRoute>
                         <DistributeTickets />
+                    </PrivateRoute>
+                } />
+                <Route path="/manage-users" element={
+                    <PrivateRoute>
+                        <ManageUsers />
+                    </PrivateRoute>
+                } />
+                <Route path="/reports" element={
+                    <PrivateRoute>
+                        <Reports />
                     </PrivateRoute>
                 } />
                 <Route path="/scan" element={

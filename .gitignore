@@ -1,7 +1,72 @@
+# Environment and Virtual Environments
 .venv/
-__pycache__/
-*.sqlite3
+venv/
+env/
 .env
-node_modules/
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
 dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Django
+db.sqlite3
+db.sqlite3-journal
+backend/db.sqlite3
+backend/staticfiles/
+staticfiles/
+media/
+
+# Frontend (React/Vite)
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.eslintcache
+.stylelintcache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# OS specific files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Build and Logs
+*.log
+*.pot
+*.pyc

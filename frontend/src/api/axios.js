@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-const baseURL = process.env.NODE_ENV === 'production' 
-  ? 'https://your-railway-app-url.up.railway.app' // To be updated
-  : 'http://localhost:8000';
+const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const axiosInstance = axios.create({
     baseURL: baseURL,
